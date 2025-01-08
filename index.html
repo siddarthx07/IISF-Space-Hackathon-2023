@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Hackathon Project Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2.7 rem 0;
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-badge {
+            background: #ffd700;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: #1a237e;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* Overview Section Styles */
+        .overview-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .overview-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .overview-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            color: #1a237e;
+            font-weight: 600;
+        }
+        
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .key-point {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #1a237e;
+        }
+        
+        .key-point-title {
+            color: #1a237e;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Results Section Styles */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+        }
+
+            .image-container {
+        width: 100%;
+        min-height: 300px;
+        max-height: 400px;
+        background: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Changed from 'cover' to 'contain' */
+        padding: 1rem;      /* Added padding to prevent image from touching edges */
+    }
+
+        .result-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            color: #1a237e;
+        }
+
+        .result-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .key-features {
+            list-style: none;
+            padding-left: 0;
+            margin: 1rem 0;
+        }
+
+        .key-features li {
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .color-indicator {
+            font-weight: 600;
+            color: #1a237e;
+        }
+
+        .significance {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .significance-title {
+            font-weight: 600;
+            color: #1a237e;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Recognition Section Styles */
+        .recognition-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .recognition-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .recognition-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .caption {
+            padding: 1rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            cursor: pointer;
+            padding: 2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .modal img {
+        max-width: 90%;
+        max-height: 90vh;
+        object-fit: contain;
+        background: #f5f5f5;
+    }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .recognition-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .image-container {
+                min-height: 250px;
+                max-height: 350px;
+            }
+        }
+
+        .team-info {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 1rem;
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .image-container {
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .image-container::after {
+            content: "Click to zoom";
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 35, 126, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container:hover::after {
+            opacity: 1;
+        }
+
+        .result-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="project-title">LULC (Land Use Land Cover) Change Detection and Prediction Using Google Earth Engine</h1>
+            <div class="achievement-badge">🏆 Winners - IISF Space Hackathon (ISRO) 2023</div>
+            <div class="team-info">By Siddarth Bandi & Team</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Project Overview Section -->
+        <section class="section">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="overview-content">
+                <div class="overview-section">
+                    <p>Our award-winning project focused on analyzing and predicting Land Use and Land Cover (LULC) changes in Hyderabad, India, leveraging Google Earth Engine and advanced machine learning algorithms. Using satellite imagery and geospatial datasets, we developed a comprehensive system for tracking urban development and environmental changes from 2017 to 2022.</p>
+                </div>
+        
+                <div class="key-points">
+                    <div class="key-point">
+                        <div class="key-point-title">Technical Approach</div>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>• Satellite data integration from Sentinel-2 and Landsat</li>
+                            <li>• Advanced preprocessing with geometric corrections</li>
+                            <li>• Change detection using supervised classification</li>
+                            <li>• Predictive modeling with Random Forest & DeepAR</li>
+                        </ul>
+                    </div>
+        
+                    <div class="key-point">
+                        <div class="key-point-title">Project Impact</div>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>• 82% model accuracy achievement</li>
+                            <li>• Urban planning insights generation</li>
+                            <li>• Environmental monitoring support</li>
+                            <li>• Resource management optimization</li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="overview-section" style="margin-top: 1.5rem;">
+                    <p>Our solution provides valuable insights for urban planners, environmental scientists, and policy makers, enabling data-driven decisions for sustainable urban development and environmental conservation in Hyderabad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="section">
+            <h2 class="section-title">Project Results</h2>
+            <div class="results-grid">
+                <!-- Result Card 1 -->
+                <div class="result-card">
+                    <div class="image-container">
+                        <img src="/images/PHOTO-2024-04-29-03-53-34.jpg" alt="Built-up Area Changes">
+                    </div>
+                    <div class="result-content">
+                        <h3 class="result-title">Built-up Area Changes (2017-2021)</h3>
+                        <p class="result-description">This map highlights changes in built-up areas in Hyderabad over a four-year period.</p>
+                        <ul class="key-features">
+                            <li><span class="color-indicator">Green Areas</span>: Indicate urban expansion due to population growth and infrastructure development</li>
+                            <li><span class="color-indicator">Red Areas</span>: Show areas where urban spaces decreased, possibly due to redevelopment</li>
+                        </ul>
+                        <div class="significance">
+                            <div class="significance-title">Significance</div>
+                            <p>Helps in urban planning, resource management, and understanding environmental impacts of urbanization</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Card 2 -->
+                <div class="result-card">
+                    <div class="image-container">
+                        <img src="/images/PHOTO-2024-04-29-03-53-35.jpg" alt="Water Bodies Changes">
+                    </div>
+                    <div class="result-content">
+                        <h3 class="result-title">Water Bodies Changes (2017-2021)</h3>
+                        <p class="result-description">This map shows changes in water bodies in Hyderabad over a four-year period.</p>
+                        <ul class="key-features">
+                            <li><span class="color-indicator">Blue Areas</span>: Indicate an increase in water coverage, likely due to improved water management</li>
+                            <li><span class="color-indicator">Red Areas</span>: Represent a decrease in water coverage, possibly due to urbanization</li>
+                        </ul>
+                        <div class="significance">
+                            <div class="significance-title">Significance</div>
+                            <p>Provides insights for water resource management, urban planning, and environmental conservation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Card 3 -->
+                <div class="result-card">
+                    <div class="image-container">
+                        <img src="/images/PHOTO-2024-04-29-03-52-39.jpg" alt="Water Bodies Prediction Analysis">
+                    </div>
+                    <div class="result-content">
+                        <h3 class="result-title">Water Bodies Prediction Analysis (2022)</h3>
+                        <p class="result-description">This image compares the ground truth and predicted water bodies in Hyderabad.</p>
+                        <ul class="key-features">
+                            <li><span class="color-indicator">Blue</span>: Actual water bodies (ground truth)</li>
+                            <li><span class="color-indicator">Red</span>: Predicted water bodies</li>
+                            <li><span class="color-indicator">Purple</span>: Common areas between ground truth and prediction</li>
+                            <li><span class="color-indicator">White</span>: Areas with no water bodies</li>
+                        </ul>
+                        <div class="significance">
+                            <div class="significance-title">Significance</div>
+                            <p>Highlights the accuracy of the prediction model and its ability to detect changes in water bodies</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Card 4 -->
+                <div class="result-card">
+                    <div class="image-container">
+                        <img src="/images/Picture 1.png" alt="Built-up Areas Prediction Analysis">
+                    </div>
+                    <div class="result-content">
+                        <h3 class="result-title">Built-up Areas Prediction Analysis (2022)</h3>
+                        <p class="result-description">This image compares the ground truth and predicted built-up areas in Hyderabad.</p>
+                        <ul class="key-features">
+                            <li><span class="color-indicator">Green</span>: Actual built-up areas (ground truth)</li>
+                            <li><span class="color-indicator">Red</span>: Predicted built-up areas</li>
+                            <li><span class="color-indicator">Brownish Green</span>: Overlapping areas showing matches</li>
+                            <li><span class="color-indicator">White</span>: Areas with no built-up regions</li>
+                        </ul>
+                        <div class="significance">
+                            <div class="significance-title">Significance</div>
+                            <p>Evaluates the prediction model's accuracy in detecting built-up areas, aiding urban planning and infrastructure development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Recognition</h2>
+            <div class="recognition-gallery">
+                <div class="recognition-item">
+                    <img src="/images/IMG_1819 2.jpg" alt="Award Ceremony">
+                    <div class="caption">Receiving the award from Shri Sudheer Kumar N, Director, CBPO at ISRO during the Space Hackathon</div>
+                </div>
+                <div class="recognition-item">
+                    <img src="/images/e5189b6d-b8ff-43c6-ab20-86c6d29531f7.jpg" alt="Project Pitch">
+                    <div class="caption">Final Project Pitch, where our results impressed the ISRO evaluation panel</div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Enhanced modal
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.style.display = 'none';
+        const modalImg = document.createElement('img');
+        modal.appendChild(modalImg);
+        document.body.appendChild(modal);
+
+        // Enhanced image interaction
+        document.querySelectorAll('.result-card img').forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                modalImg.src = this.src;
+                modalImg.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    modalImg.style.transform = 'scale(1)';
+                }, 50);
+            });
+        });
+
+        // Enhanced modal closing
+        modal.addEventListener('click', function() {
+            modalImg.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.display = 'none';
+                modalImg.style.transform = 'scale(1)';
+            }, 150);
+        });
+    });
+</script>
+
+</html>
